@@ -10,7 +10,7 @@ def get_info():
 
 
 def get_ticker():
-  response = requests.get(url='https://yobit.net/api/3/ticker/eth_btc-xrp_btc')
+  response = requests.get(url='https://yobit.net/api/3/ticker/eth_btc-xrp_btcccc?ignore_invalid=1')
 
   with open('ticker.txt', 'w') as file:
     file.write(response.text)
