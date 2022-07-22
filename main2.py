@@ -9,23 +9,26 @@ from urllib.parse import urlencode
 
 def get_info():
   values = dict()
-  values['method'] = 'getInfo'
-  values['nonce'] = str(int(time.time()))
+  values["method"] = "getInfo"
+  values["nonce"] = str(int(time.time()))
 
-  body = urlencode(values).encode('utf-8')
-  sign = hmac.new(API_SECRET.encode('utf-8'), body, hashlib.sha512).hexdigest()
+  body = urlencode(values).encode("utf-8")
+  sign = hmac.new(API_SECRET.encode("utf-8"), body, hashlib.sha512).hexdigest()
 
-  print(sign)
+  headers = {
+    "key": API_KEY,
+    "sign": sign
+  }
+
+  response = requests.post(url="https://yobit.net/tapi/", headers=headers, data=values)
+  return response.json()
 
 
   
 
-
-
-
 def main():
-  get_info()
+  print(get_info())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
   main()
