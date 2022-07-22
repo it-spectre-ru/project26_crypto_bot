@@ -10,7 +10,7 @@ def get_info():
   values['method'] = 'getInfo'
   values['nonce'] = str(int(time.time()))
 
-  body = urlencode(values)
+  body = urlencode(values).encode('utf-8')
   print(body)
 
   
