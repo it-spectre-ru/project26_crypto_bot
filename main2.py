@@ -1,16 +1,17 @@
 import requests
-from config import API_KEY, API_SECRET
 import time
-
+from config import API_KEY, API_SECRET
+from urllib.parse import urlencode
 
 
 
 def get_info():
-  values = {}
+  values = dict()
   values['method'] = 'getInfo'
-  values['nonce'] = time.time()
+  values['nonce'] = str(int(time.time()))
 
-  print(values)
+  body = urlencode(values)
+  print(body)
 
   
 
